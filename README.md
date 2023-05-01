@@ -1,12 +1,26 @@
 # Vite Tailwind Template
 
-This is my go-to, simple, vanilla site template with TailwindCSS for styling. 
+This is a basic, vanilla site template with [TailwindCSS](https://tailwindcss.com/) for styling. 
 
 To use it you can simply clone this repo:
 
 ```bash
 npx degit https://github.com/numberthink/vite-tailwind-template.git
 ```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+And run it:
+
+```bash
+npm run dev
+```
+
+## Rebuild from scratch
 
 Or follow the steps I took to create it from scratch:
 
@@ -30,7 +44,7 @@ Init tailwind:
 npx tailwindcss init
 ```
 
-Install tailwind dependencies and plugins (tailwind forms, taolwind typography, autoprefixer, and postcss):
+Install tailwind dependencies and plugins (tailwind forms (optional), tailwind typography (optional), autoprefixer, and postcss):
 
 ```bash
 npm i @tailwindcss/forms
@@ -44,19 +58,19 @@ Update Tailwind config (`tailwind.config.js` in the root folder):
 ```js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./**/*.html'],
+  mode: 'jit',
+  content: ['./index.html'],
   theme: {
     extend: {},
   },
   plugins: [
-    	require('@tailwindcss/typography'),
-		require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+	require('@tailwindcss/forms'),
   ],
 }
-
 ```
 
-Update PostCSS config?
+Update PostCSS config (`postcss.config.js`)
 
 ```js
 const tailwind = require('tailwindcss');
@@ -71,22 +85,6 @@ module.exports = {
 	]
 };
 
-```
-
-Update Vite config?
-
-```js
-import { sveltekit } from '@sveltejs/kit/vite';
-import tailwindcss from 'tailwindcss';
-/** @type {import('vite').UserConfig} */
-const config = {
-	plugins: [sveltekit(), tailwindcss()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
-};
-
-export default config;
 ```
 
 Run tailwind "watch" command:
